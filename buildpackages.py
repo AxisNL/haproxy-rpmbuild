@@ -67,7 +67,7 @@ def process_specfile(specfile):
     print_ok(' ')
 
     # logging
-    with open(os.path.join(currentpath, '{0}.log'.format(specfile))) as f:
+    with open(os.path.join(currentpath, '{0}.log'.format(specfile)), 'w') as f:
         f.write(command_output)
 
 
