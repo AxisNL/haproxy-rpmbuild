@@ -63,7 +63,7 @@ def check_macros():
         print_err('value private_gpg_key_name not found in config, or value invalid')
         exit(1)
 
-    with open('~/.rpmmacros', 'w') as f:
+    with open(os.path.expanduser('~/.rpmmacros'), 'w') as f:
         f.write('%_signature gpg\n')
         f.write('%_gpg_path ~/.gnupg\n')
         f.write('%_gpg_name Fernando Aleman\n')
