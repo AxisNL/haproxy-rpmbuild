@@ -47,7 +47,7 @@ def check_for_gpgkey():
         print_err('value gpg_key_id not found in config, or value invalid')
         exit(1)
 
-    command_line = "/usr/bin/gpg --list-private-keys {0}".format(private_gpg_key_id)
+    command_line = "/usr/bin/gpg --list-secret-keys {0}".format(private_gpg_key_id)
     command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
     command_output = command_result.communicate()[0]
     if not command_result.returncode == 0:
