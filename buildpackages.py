@@ -45,7 +45,7 @@ def process_specfile(filename):
     print_ok('Starting with specfile {}'.format(specfile))
     print_ok('-------------------')
     # download all requirements for spec file
-    command_line = "/usr/bin/spectool -R -g {}".format(specfile_fullpath)
+    command_line = "/usr/bin/spectool -R -g {0}".format(specfile_fullpath)
     print_ok('Running command \'{}\''.format(command_line))
     command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
     command_output = command_result.communicate()[0]
@@ -55,7 +55,7 @@ def process_specfile(filename):
         print_diff(command_output)
 
     # download all requirements for spec file
-    command_line = "/usr/bin/rpmbuild -bb {}".format(specfile_fullpath)
+    command_line = "/usr/bin/rpmbuild -bb {0}".format(specfile_fullpath)
     print_ok('Running command \'{}\''.format(command_line))
     command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
     command_output = command_result.communicate()[0]
