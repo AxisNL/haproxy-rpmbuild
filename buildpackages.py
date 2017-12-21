@@ -42,7 +42,7 @@ def print_diff(string):
 
 def check_for_gpgkey():
 
-    config = json.load('config.json')
+    config = json.load(open('config.json'))
     print(config['gpg_key_id'])
     # gpg --list-keys E424014F
     # command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
