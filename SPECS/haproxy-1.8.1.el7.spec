@@ -61,6 +61,9 @@ pushd contrib/systemd
 popd
 
 %install
+
+%{__install} -vDm755 contrib/systemd/haproxy.service %{buildroot}%{_unitdir}/%{name}.service
+
 %{__make} install-bin DESTDIR=%{buildroot} PREFIX=%{_prefix} TARGET="linux2628"
 %{__make} install-man DESTDIR=%{buildroot} PREFIX=%{_prefix}
 
