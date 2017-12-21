@@ -77,11 +77,14 @@ if [ "$1" -ge "1" ]; then
 fi
 
 %files
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %doc CHANGELOG README doc/architecture.txt doc/configuration.txt doc/intro.txt doc/management.txt doc/proxy-protocol.txt
 %doc %{_mandir}/man1/%{name}.1*
 %attr(0755,root,root) %{_sbindir}/%{name}
-%dir %{_sysconfdir}/%{name}
+%dir %{haproxy_confdir}
+%dir %{haproxy_datadir}
+%{haproxy_datadir}/*
 %config(noreplace) %{haproxy_confdir}/%{name}.cfg
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
+
 %attr(0755,root,root) %config %{_sysconfdir}/rc.d/init.d/%{name}
