@@ -1,3 +1,9 @@
+%define haproxy_user    haproxy
+%define haproxy_group   %{haproxy_user}
+%define haproxy_home    %{_localstatedir}/lib/haproxy
+%define haproxy_confdir %{_sysconfdir}/haproxy
+%define haproxy_datadir %{_datadir}/haproxy
+
 Summary:        HA-Proxy is a TCP/HTTP reverse proxy for high availability environments
 Name:           haproxy
 Version:        1.8.0
