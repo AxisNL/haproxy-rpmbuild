@@ -64,10 +64,10 @@ def check_macros():
         exit(1)
 
     with open('~/.rpmmacros', 'w') as f:
-        print('%_signature gpg', file=f)
-        print('%_gpg_path ~/.gnupg', file=f)
-        print('%_gpg_name Fernando Aleman', file=f)
-        print('%_gpgbin /usr/bin/gpg', file=f)
+        f.write('%_signature gpg\n')
+        f.write('%_gpg_path ~/.gnupg\n')
+        f.write('%_gpg_name Fernando Aleman\n')
+        f.write('%_gpgbin /usr/bin/gpg\n')
 
 
 def process_specfile(specfile):
