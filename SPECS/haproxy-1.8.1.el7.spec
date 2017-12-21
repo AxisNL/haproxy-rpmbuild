@@ -32,6 +32,9 @@ Requires(preun):    systemd
 Requires(postun):   systemd
 
 %description
+This version of HAProxy is retrieved and repackaged, see
+https://haproxy.hongens.nl.
+
 HAProxy is a TCP/HTTP reverse proxy which is particularly suited for high
 availability environments. Indeed, it can:
  - route HTTP requests depending on statically assigned cookies
