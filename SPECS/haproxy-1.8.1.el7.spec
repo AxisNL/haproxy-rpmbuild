@@ -56,9 +56,9 @@ regparm_opts="USE_REGPARM=1"
 
 %{__make} %{?_smp_mflags} CPU="generic" TARGET="linux2628" USE_OPENSSL=1 USE_PCRE=1 USE_ZLIB=1 ${regparm_opts} ADDINC="%{optflags}" USE_LINUX_TPROXY=1 ADDLIB="%{__global_ldflags}" DEFINE=-DTCP_USER_TIMEOUT=18
 
-pushd contrib/systemd
-%{__make} systemd OPTIMIZE="%{optflags}"
-popd
+#pushd contrib/systemd
+#%{__make} systemd OPTIMIZE="%{optflags}"
+#popd
 
 %install
 %{__make} install-bin DESTDIR=%{buildroot} PREFIX=%{_prefix} TARGET="linux2628"
