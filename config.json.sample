@@ -1,0 +1,5 @@
+{
+  "gpg_key_name": "KeyName",
+  "gpg_key_id": "ABC12345",
+  "gpg_key_pass" : "secure"
+}
