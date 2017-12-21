@@ -54,7 +54,7 @@ regparm_opts=
 regparm_opts="USE_REGPARM=1"
 %endif
 
-%{__make} %{?_smp_mflags} CPU="generic" TARGET="linux2628" USE_OPENSSL=1 USE_PCRE=1 USE_ZLIB=1 ${regparm_opts} ADDINC="%{optflags}" USE_LINUX_TPROXY=1 ADDLIB="%{__global_ldflags}" DEFINE=-DTCP_USER_TIMEOUT=18
+%{__make} %{?_smp_mflags} CPU="generic" TARGET="linux2628" EXTRA=haproxy-systemd-wrapper USE_OPENSSL=1 USE_PCRE=1 USE_ZLIB=1 ${regparm_opts} ADDINC="%{optflags}" USE_LINUX_TPROXY=1 ADDLIB="%{__global_ldflags}" DEFINE=-DTCP_USER_TIMEOUT=18
 
 #pushd contrib/systemd
 #%{__make} systemd OPTIMIZE="%{optflags}"
@@ -125,4 +125,3 @@ fi
 %{_bindir}/iprange
 %{_mandir}/man1/*
 %attr(-,%{haproxy_user},%{haproxy_group}) %dir %{haproxy_home}
-
