@@ -24,6 +24,7 @@ Source4:        %{name}.sysconfig
 BuildRequires:  pcre-devel
 BuildRequires:  zlib-devel
 BuildRequires:  openssl-devel
+BuildRequires:  systemd-devel
 BuildRequires:  systemd-units
 
 Requires(pre):      shadow-utils
