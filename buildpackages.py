@@ -41,16 +41,33 @@ def print_diff(string):
 
 
 def check_for_gpgkey():
-
     config = json.load(open('config.json'))
-    print(config['gpg_key_id'])
-    # gpg --list-keys E424014F
-    # command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
-    # command_output = command_result.communicate()[0]
-    # if not command_result.returncode == 0:
-    #     print_warn(command_output)
-    # else:
-    #     print_diff(command_output)
+    private_gpg_key_id =  config['gpg_key_id']
+    if len(private_gpg_key_id) < 8:
+        print_err('value gpg_key_id not found in config, or value invalid')
+        exit(1)
+
+    command_line = "/usr/bin/gpg --list-private-keys {0}".format(private_gpg_key_id)
+    command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
+    command_output = command_result.communicate()[0]
+    if not command_result.returncode == 0:
+        print_err("Error finding the configured private key.")
+        print_err(command_output)
+        exit(1)
+
+
+def check_macros():
+    config = json.load(open('config.json'))
+    private_gpg_key_name =  config['gpg_key_name']
+    if len(private_gpg_key_name) < 1:
+        print_err('value private_gpg_key_name not found in config, or value invalid')
+        exit(1)
+
+    with open('~/.rpmmacros', 'w') as f:
+        print('%_signature gpg', file=f)
+        print('%_gpg_path ~/.gnupg', file=f)
+        print('%_gpg_name Fernando Aleman', file=f)
+        print('%_gpgbin /usr/bin/gpg', file=f)
 
 
 def process_specfile(specfile):
@@ -88,11 +105,13 @@ if not linux.upper().startswith('CENTOS'):
 # check if we have a private key so we can sign the packages
 check_for_gpgkey()
 
+# Check rpmmacros
+check_macros()
+
 if osmajorver.startswith('7'):
     # loop through each specfile for EL7
     for specfile in list_of_spec_files:
         if '.el7.' in specfile:
-
             process_specfile(specfile)
 
 elif osmajorver.startswith('6'):
