@@ -8,7 +8,7 @@
 
 Name:           haproxy
 Version:        1.8.1
-Release:        1%{el#}
+Release:        1%{?dist}
 Summary:        TCP/HTTP proxy and load balancer for high availability environments
 
 Group:          System Environment/Daemons
