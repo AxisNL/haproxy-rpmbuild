@@ -101,6 +101,8 @@ def process_specfile(specfile):
 
     print_ok(' ')
 
+print("scp ha* hongens@hon-web-01:/home/domains/hongens/haproxy/repo/centos/7/x86_64/")
+
 
 if not linux.upper().startswith('CENTOS'):
     print_err("Error, not a centos machine..")

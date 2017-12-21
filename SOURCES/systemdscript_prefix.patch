@@ -1,0 +1,8 @@
+--- contrib/systemd/Makefile.orig	2017-12-21 22:03:09.871061758 +0100
++++ contrib/systemd/Makefile	2017-12-21 22:03:19.438502306 +0100
+@@ -1,4 +1,4 @@
+-PREFIX = /usr/local
++PREFIX = /usr
+ SBINDIR = $(PREFIX)/sbin
+
+ haproxy.service: haproxy.service.in

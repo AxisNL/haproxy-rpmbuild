@@ -19,6 +19,7 @@ Source0:        http://www.haproxy.org/download/1.8/src/haproxy-%{version}.tar.g
 Source1:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.cfg
 Source2:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.logrotate
 Source3:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.sysconfig
+Patch0:         https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/systemdscript_prefix.patch
 
 BuildRequires:  pcre-devel
 BuildRequires:  zlib-devel
@@ -59,6 +60,7 @@ regparm_opts="USE_REGPARM=1"
 %{__make} %{?_smp_mflags} CPU="generic" TARGET="linux2628" USE_SYSTEMD=1 USE_OPENSSL=1 USE_PCRE=1 USE_ZLIB=1 ${regparm_opts} ADDINC="%{optflags}" USE_LINUX_TPROXY=1 ADDLIB="%{__global_ldflags}" DEFINE=-DTCP_USER_TIMEOUT=18
 
 pushd contrib/systemd
+%patch0 -p0
 %{__make}
 popd
 
