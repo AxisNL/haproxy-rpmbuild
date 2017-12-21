@@ -8,7 +8,7 @@ If you don't want to use the ready-built packages but you want to start building
 
 First of all, on your buildboxes, make sure all the required packages are installed:
 
-    sudo yum install rpm-build rpmdevtools rpm-sign gcc pcre-devel
+    sudo yum install rpm-build rpmdevtools rpm-sign gcc pcre-devel expect
 
 ### GPG keys
 

@@ -89,8 +89,8 @@ def process_specfile(specfile):
         print_diff(command_output)
 
     # download all requirements for spec file
-    command_line = 'echo "{0}" | setsid /usr/bin/rpmbuild -bb --define "debug_package %{{nil}}" --sign {1}'.format(
-        gpg_key_pass, specfile_fullpath)
+    command_line = '/usr/bin/expect build-and-sign.exp {0} {1}'.format(
+        specfile_fullpath, gpg_key_pass)
     print_ok('Running command \'{0}\''.format(command_line))
     command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
     command_output = command_result.communicate()[0]

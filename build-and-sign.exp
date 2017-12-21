@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+
+### build-and-sign.exp -- Sign RPMs by sending the passphrase.
+
+set specfile [lindex $argv 0];
+set passphrase [lindex $argv 1];
+set timeout 600
+
+spawn /usr/bin/rpmbuild -bb --define "debug_package %{nil}" --sign $specfile
+expect -exact "Enter pass phrase: "
+send -- "${passphrase}\r"
+expect eof
+
+## end of build-and-sign.exp
