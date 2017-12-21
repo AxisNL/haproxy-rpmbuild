@@ -39,7 +39,7 @@ def print_diff(string):
     print(colors.ENDC + string + colors.ENDC)
 
 
-def process_specfile(filename):
+def process_specfile(specfile):
     global currentpath
     specfile_fullpath = os.path.join(currentpath, 'SPECS', specfile)
     print_ok('Starting with specfile {0}'.format(specfile))
@@ -67,7 +67,7 @@ def process_specfile(filename):
     print_ok(' ')
 
     # logging
-    with open(os.path.join(currentpath, '{0}.log'.format(specfile)) as f:
+    with open(os.path.join(currentpath, '{0}.log'.format(specfile))) as f:
         f.write(command_output)
 
 
