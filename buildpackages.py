@@ -1,4 +1,5 @@
 #!/bin/env python
+import json
 import os
 import platform
 import subprocess
@@ -39,8 +40,6 @@ def print_diff(string):
     print(colors.ENDC + string + colors.ENDC)
 
 
-
-
 def check_for_gpgkey():
 
     config = json.load('config.json')
@@ -52,6 +51,7 @@ def check_for_gpgkey():
     #     print_warn(command_output)
     # else:
     #     print_diff(command_output)
+
 
 def process_specfile(specfile):
     global currentpath
@@ -79,10 +79,6 @@ def process_specfile(specfile):
         print_diff(command_output)
 
     print_ok(' ')
-
-    # logging
-    with open(os.path.join(currentpath, '{0}.log'.format(specfile)), 'w') as f:
-        f.write(command_output)
 
 
 if not linux.upper().startswith('CENTOS'):
