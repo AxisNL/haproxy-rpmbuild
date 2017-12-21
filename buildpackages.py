@@ -42,7 +42,7 @@ def print_diff(string):
 def process_specfile(filename):
     global currentpath
     specfile_fullpath = os.path.join(currentpath, 'SPECS', specfile)
-    print_ok('Starting with specfile {}'.format(specfile))
+    print_ok('Starting with specfile {0}'.format(specfile))
     print_ok('-------------------')
     # download all requirements for spec file
     command_line = "/usr/bin/spectool -R -g {0}".format(specfile_fullpath)
