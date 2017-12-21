@@ -66,7 +66,7 @@ def check_macros():
     with open(os.path.expanduser('~/.rpmmacros'), 'w') as f:
         f.write('%_signature gpg\n')
         f.write('%_gpg_path ~/.gnupg\n')
-        f.write('%_gpg_name Fernando Aleman\n')
+        f.write('%_gpg_name {0}\n'.format(private_gpg_key_name))
         f.write('%_gpgbin /usr/bin/gpg\n')
 
 
