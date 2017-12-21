@@ -62,12 +62,11 @@ popd
 
 %install
 
-%{__install} -vDm755 contrib/systemd/haproxy.service %{buildroot}%{_unitdir}/%{name}.service
+%{__install} -p -D -m 0644 contrib/systemd/haproxy.service %{buildroot}%{_unitdir}/%{name}.service
 
 %{__make} install-bin DESTDIR=%{buildroot} PREFIX=%{_prefix} TARGET="linux2628"
 %{__make} install-man DESTDIR=%{buildroot} PREFIX=%{_prefix}
 
-#%{__install} -p -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 %{__install} -p -D -m 0644 %{SOURCE1} %{buildroot}%{haproxy_confdir}/%{name}.cfg
 %{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %{__install} -p -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
