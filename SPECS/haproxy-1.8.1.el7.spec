@@ -16,10 +16,9 @@ License:        GPLv2+
 
 URL:            http://www.haproxy.org/
 Source0:        http://www.haproxy.org/download/1.8/src/haproxy-%{version}.tar.gz
-Source1:        %{name}.service
-Source2:        %{name}.cfg
-Source3:        %{name}.logrotate
-Source4:        %{name}.sysconfig
+Source1:        %{name}.cfg
+Source2:        %{name}.logrotate
+Source3:        %{name}.sysconfig
 
 BuildRequires:  pcre-devel
 BuildRequires:  zlib-devel
@@ -65,10 +64,10 @@ popd
 %{__make} install-bin DESTDIR=%{buildroot} PREFIX=%{_prefix} TARGET="linux2628"
 %{__make} install-man DESTDIR=%{buildroot} PREFIX=%{_prefix}
 
-%{__install} -p -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
-%{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{haproxy_confdir}/%{name}.cfg
-%{__install} -p -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
-%{__install} -p -D -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
+#%{__install} -p -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
+%{__install} -p -D -m 0644 %{Source1} %{buildroot}%{haproxy_confdir}/%{name}.cfg
+%{__install} -p -D -m 0644 %{Source2} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+%{__install} -p -D -m 0644 %{Source3} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 %{__install} -d -m 0755 %{buildroot}%{haproxy_home}
 %{__install} -d -m 0755 %{buildroot}%{haproxy_datadir}
 %{__install} -d -m 0755 %{buildroot}%{_bindir}
