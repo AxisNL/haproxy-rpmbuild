@@ -39,6 +39,20 @@ def print_diff(string):
     print(colors.ENDC + string + colors.ENDC)
 
 
+
+
+def check_for_gpgkey():
+
+    config = json.load('config.json')
+    print(config['gpg_key_id'])
+    # gpg --list-keys E424014F
+    # command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
+    # command_output = command_result.communicate()[0]
+    # if not command_result.returncode == 0:
+    #     print_warn(command_output)
+    # else:
+    #     print_diff(command_output)
+
 def process_specfile(specfile):
     global currentpath
     specfile_fullpath = os.path.join(currentpath, 'SPECS', specfile)
@@ -75,13 +89,18 @@ if not linux.upper().startswith('CENTOS'):
     print_err("Error, not a centos machine..")
     exit(1)
 
-if osmajorver.startswith('7'):
+# check if we have a private key so we can sign the packages
+check_for_gpgkey()
 
+if osmajorver.startswith('7'):
+    # loop through each specfile for EL7
     for specfile in list_of_spec_files:
         if '.el7.' in specfile:
+
             process_specfile(specfile)
 
 elif osmajorver.startswith('6'):
+    # loop through each specfile for EL6
     for specfile in list_of_spec_files:
         if '.el6.' in specfile:
             process_specfile(specfile)
