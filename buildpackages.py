@@ -46,7 +46,7 @@ def process_specfile(filename):
     print_ok('-------------------')
     # download all requirements for spec file
     command_line = "/usr/bin/spectool -R -g {0}".format(specfile_fullpath)
-    print_ok('Running command \'{}\''.format(command_line))
+    print_ok('Running command \'{0}\''.format(command_line))
     command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
     command_output = command_result.communicate()[0]
     if not command_result.returncode == 0:
@@ -56,7 +56,7 @@ def process_specfile(filename):
 
     # download all requirements for spec file
     command_line = "/usr/bin/rpmbuild -bb {0}".format(specfile_fullpath)
-    print_ok('Running command \'{}\''.format(command_line))
+    print_ok('Running command \'{0}\''.format(command_line))
     command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
     command_output = command_result.communicate()[0]
     if not command_result.returncode == 0:
@@ -83,6 +83,6 @@ elif osmajorver.startswith('6'):
             process_specfile(specfile)
 
 else:
-    print_err("Error, version {} not supported..".format(osmajorver))
+    print_err("Error, version {0} not supported..".format(osmajorver))
     exit(1)
 
