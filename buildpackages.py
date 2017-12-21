@@ -55,7 +55,7 @@ def process_specfile(filename):
         print_diff(command_output)
 
     # download all requirements for spec file
-    command_line = "/usr/bin/rpmbuild -bb --define \"debug_package %\{nil\}\" {0}".format(specfile_fullpath)
+    command_line = "/usr/bin/rpmbuild -bb --define \"debug_package %{{nil}}\" {0}".format(specfile_fullpath)
     print_ok('Running command \'{0}\''.format(command_line))
     command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
     command_output = command_result.communicate()[0]
