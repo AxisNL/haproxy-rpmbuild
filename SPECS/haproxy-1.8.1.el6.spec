@@ -11,8 +11,7 @@ BuildRequires: pcre-devel
 Requires: /sbin/chkconfig, /sbin/service
 
 %description
-This version of HAProxy is retrieved and repackaged, see
-https://haproxy.hongens.nl.
+This version of HAProxy is a build from the official haproxy sources, see https://haproxy.hongens.nl.
 
 HA-Proxy is a TCP/HTTP reverse proxy which is particularly suited for high
 availability environments. Indeed, it can:
