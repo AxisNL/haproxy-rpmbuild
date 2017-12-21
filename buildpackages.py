@@ -58,7 +58,7 @@ def check_for_gpgkey():
 
 def check_macros():
     config = json.load(open('config.json'))
-    private_gpg_key_name =  config['gpg_key_name']
+    private_gpg_key_name = config['gpg_key_name']
     if len(private_gpg_key_name) < 1:
         print_err('value private_gpg_key_name not found in config, or value invalid')
         exit(1)
@@ -71,6 +71,9 @@ def check_macros():
 
 
 def process_specfile(specfile):
+    config = json.load(open('config.json'))
+    gpg_key_pass = config['gpg_key_pass']
+
     global currentpath
     specfile_fullpath = os.path.join(currentpath, 'SPECS', specfile)
     print_ok('Starting with specfile {0}'.format(specfile))
@@ -86,7 +89,8 @@ def process_specfile(specfile):
         print_diff(command_output)
 
     # download all requirements for spec file
-    command_line = "/usr/bin/rpmbuild -bb --define \"debug_package %{{nil}}\" {0}".format(specfile_fullpath)
+    command_line = 'echo "{0}" | setsid /usr/bin/rpmbuild -bb --define "debug_package %{{nil}}" --sign {1}'.format(
+        gpg_key_pass, specfile_fullpath)
     print_ok('Running command \'{0}\''.format(command_line))
     command_result = subprocess.Popen(command_line, stdout=subprocess.PIPE, shell=True)
     command_output = command_result.communicate()[0]
