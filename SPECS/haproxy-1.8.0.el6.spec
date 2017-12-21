@@ -78,8 +78,8 @@ fi
 
 %files
 %defattr(-,root,root,-)
-%doc CHANGELOG README doc/architecture.txt doc/configuration.txt doc/intro.txt doc/management.txt doc/proxy-protocol.txt
-%doc %{_mandir}/man1/%{name}.1*
+%doc doc/* examples/
+%doc CHANGELOG LICENSE README ROADMAP VERSION
 %attr(0755,root,root) %{_sbindir}/%{name}
 %dir %{haproxy_confdir}
 %dir %{haproxy_datadir}
