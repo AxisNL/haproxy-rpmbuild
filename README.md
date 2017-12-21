@@ -2,7 +2,7 @@
 
 ### install rpmbuild tools
 
-  sudo yum install rpm-build
+  sudo yum install rpm-build rpmdevtools gcc pcre-devel
 
 
 ### run the stuff
