@@ -66,6 +66,10 @@ def process_specfile(filename):
 
     print_ok(' ')
 
+    # logging
+    with open(os.path.join(currentpath, '{0}.log'.format(specfile)) as f:
+        f.write(command_output)
+
 
 if not linux.upper().startswith('CENTOS'):
     print_err("Error, not a centos machine..")
