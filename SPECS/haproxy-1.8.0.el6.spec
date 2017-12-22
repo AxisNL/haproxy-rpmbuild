@@ -83,5 +83,5 @@ fi
 %dir %{haproxy_confdir}
 %config(noreplace) %{haproxy_confdir}/%{name}.cfg
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
-
+%{_mandir}/man1/*
 %attr(0755,root,root) %config %{_sysconfdir}/rc.d/init.d/%{name}
