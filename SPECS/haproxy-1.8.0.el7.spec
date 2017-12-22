@@ -2,7 +2,6 @@
 %define haproxy_group   %{haproxy_user}
 %define haproxy_home    %{_localstatedir}/lib/haproxy
 %define haproxy_confdir %{_sysconfdir}/haproxy
-%define haproxy_datadir %{_datadir}/haproxy
 
 %global _hardened_build 1
 
@@ -77,14 +76,7 @@ popd
 %{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %{__install} -p -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 %{__install} -d -m 0755 %{buildroot}%{haproxy_home}
-%{__install} -d -m 0755 %{buildroot}%{haproxy_datadir}
 %{__install} -d -m 0755 %{buildroot}%{_bindir}
-%{__install} -p -m 0644 ./examples/errorfiles/* %{buildroot}%{haproxy_datadir}
-
-for httpfile in $(find ./examples/errorfiles/ -type f)
-do
-    %{__install} -p -m 0644 $httpfile %{buildroot}%{haproxy_datadir}
-done
 
 %{__rm} -rf ./examples/errorfiles/
 
@@ -121,8 +113,6 @@ fi
 %doc doc/* examples/
 %doc CHANGELOG LICENSE README ROADMAP VERSION
 %dir %{haproxy_confdir}
-%dir %{haproxy_datadir}
-%{haproxy_datadir}/*
 %config(noreplace) %{haproxy_confdir}/%{name}.cfg
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}

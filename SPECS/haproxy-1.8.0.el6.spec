@@ -2,7 +2,6 @@
 %define haproxy_group   %{haproxy_user}
 %define haproxy_home    %{_localstatedir}/lib/haproxy
 %define haproxy_confdir %{_sysconfdir}/haproxy
-%define haproxy_datadir %{_datadir}/haproxy
 
 Summary:        HA-Proxy is a TCP/HTTP reverse proxy for high availability environments
 Name:           haproxy
@@ -82,8 +81,6 @@ fi
 %doc CHANGELOG LICENSE README ROADMAP VERSION
 %attr(0755,root,root) %{_sbindir}/%{name}
 %dir %{haproxy_confdir}
-%dir %{haproxy_datadir}
-%{haproxy_datadir}/*
 %config(noreplace) %{haproxy_confdir}/%{name}.cfg
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 
