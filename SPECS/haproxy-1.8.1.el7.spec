@@ -98,6 +98,7 @@ if ! getent passwd %{haproxy_user} >/dev/null ; then
         useradd -r -g %{haproxy_group} -d %{haproxy_home} -s /sbin/nologin -c "haproxy" %{haproxy_user}
     fi
 fi
+%{__rm} -f /etc/systemd/system/haproxy.service
 
 %post
 %systemd_post %{name}.service
