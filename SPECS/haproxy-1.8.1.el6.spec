@@ -55,6 +55,7 @@ risking the system's stability.
 %{__install} -d %{buildroot}%{_sysconfdir}/%{name}
 %{__install} -p -D -m 0644 %{SOURCE1} %{buildroot}%{haproxy_confdir}/%{name}.cfg
 %{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
+%{__install} -d -m 0755 %{buildroot}%{haproxy_home}
 %{__install} -s %{name} %{buildroot}%{_sbindir}/
 %{__install} -c -m 755 examples/%{name}.init %{buildroot}%{_sysconfdir}/rc.d/init.d/%{name}
 
