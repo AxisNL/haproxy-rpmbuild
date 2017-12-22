@@ -61,6 +61,16 @@ risking the system's stability.
 %clean
 [ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
 
+%pre
+getent group %{haproxy_group} >/dev/null || groupadd -f -g 188 -r %{haproxy_group}
+if ! getent passwd %{haproxy_user} >/dev/null ; then
+    if ! getent passwd 188 >/dev/null ; then
+        useradd -r -u 188 -g %{haproxy_group} -d %{haproxy_home} -s /sbin/nologin -c "haproxy" %{haproxy_user}
+    else
+        useradd -r -g %{haproxy_group} -d %{haproxy_home} -s /sbin/nologin -c "haproxy" %{haproxy_user}
+    fi
+fi
+
 %post
 /sbin/chkconfig --add %{name}
 
@@ -84,4 +94,5 @@ fi
 %config(noreplace) %{haproxy_confdir}/%{name}.cfg
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_mandir}/man1/*
+%attr(-,%{haproxy_user},%{haproxy_group}) %dir %{haproxy_home}
 %attr(0755,root,root) %config %{_sysconfdir}/rc.d/init.d/%{name}
