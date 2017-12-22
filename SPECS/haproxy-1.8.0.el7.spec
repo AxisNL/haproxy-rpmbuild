@@ -50,6 +50,7 @@ availability environments. Indeed, it can:
 
 %prep
 %setup -q
+# patch to change the prefix in the systemd script
 %patch0 -p0
 
 %build

@@ -49,15 +49,15 @@ risking the system's stability.
 %install
 [ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
 
+%{__make} install-man DESTDIR=%{buildroot} PREFIX=%{_prefix}
+
 %{__install} -d %{buildroot}%{_sbindir}
 %{__install} -d %{buildroot}%{_sysconfdir}/rc.d/init.d
 %{__install} -d %{buildroot}%{_sysconfdir}/%{name}
-%{__install} -d %{buildroot}%{_mandir}/man1/
 %{__install} -p -D -m 0644 %{SOURCE1} %{buildroot}%{haproxy_confdir}/%{name}.cfg
 %{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %{__install} -s %{name} %{buildroot}%{_sbindir}/
 %{__install} -c -m 755 examples/%{name}.init %{buildroot}%{_sysconfdir}/rc.d/init.d/%{name}
-%{__install} -c -m 755 doc/%{name}.1 %{buildroot}%{_mandir}/man1/
 
 %clean
 [ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
