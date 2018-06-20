@@ -44,7 +44,7 @@ risking the system's stability.
 %define __perl_requires /bin/true
 
 %build
-%{__make} USE_PCRE=1 TARGET=linux2628 USE_LINUX_TPROXY=1 USE_ZLIB=1 USE_REGPARM=1 USE_PCRE_JIT=1 USE_OPENSSL=1 DEBUG="" ARCH=%{_target_cpu}
+%{__make} USE_PCRE=1 TARGET=linux2628 USE_LINUX_TPROXY=1 USE_ZLIB=1 USE_OPENSSL=1 USE_LUA=1 LUA_LIB=/usr/local/lib LUA_INC=/usr/local/include DEBUG="" ARCH=%{_target_cpu}
 
 %install
 [ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
