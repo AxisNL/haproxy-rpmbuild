@@ -14,7 +14,7 @@ Group:          System Environment/Daemons
 License:        GPLv2+
 
 URL:            http://www.haproxy.org/
-Source0:        http://www.haproxy.org/download/1.8/src/haproxy-%{version}.tar.gz
+Source0:        http://www.haproxy.org/download/1.9/src/haproxy-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.cfg
 Source2:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.logrotate
 Source3:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.sysconfig
