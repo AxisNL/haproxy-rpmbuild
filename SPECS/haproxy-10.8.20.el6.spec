@@ -5,7 +5,7 @@
 
 Summary:        HA-Proxy is a TCP/HTTP reverse proxy for high availability environments
 Name:           haproxy
-Version:        1.8.5
+Version:        1.8.12
 Release:        1%{?dist}
 License:        GPL
 Group:          System Environment/Daemons
@@ -44,7 +44,7 @@ risking the system's stability.
 %define __perl_requires /bin/true
 
 %build
-%{__make} USE_PCRE=1 DEBUG="" ARCH=%{_target_cpu} TARGET=linux26
+%{__make} USE_PCRE=1 TARGET=linux2628 USE_LINUX_TPROXY=1 USE_ZLIB=1 USE_OPENSSL=1 USE_LUA=1 LUA_LIB=/usr/local/lib LUA_INC=/usr/local/include DEBUG="" ARCH=%{_target_cpu}
 
 %install
 [ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
