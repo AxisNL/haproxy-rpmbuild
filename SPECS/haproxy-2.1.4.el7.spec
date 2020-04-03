@@ -6,7 +6,7 @@
 %global _hardened_build 1
 
 Name:           haproxy
-Version:        2.0.2
+Version:        2.1.4
 Release:        1%{?dist}
 Summary:        TCP/HTTP proxy and load balancer for high availability environments
 
@@ -14,7 +14,7 @@ Group:          System Environment/Daemons
 License:        GPLv2+
 
 URL:            http://www.haproxy.org/
-Source0:        http://www.haproxy.org/download/2.0/src/haproxy-%{version}.tar.gz
+Source0:        http://www.haproxy.org/download/2.1/src/haproxy-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.cfg
 Source2:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.logrotate
 Source3:        https://raw.githubusercontent.com/AxisNL/haproxy-rpmbuild/master/SOURCES/%{name}.sysconfig
